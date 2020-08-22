@@ -15,7 +15,7 @@
   --clr-dark: #132D39;
   --clr-ex-dark: #14213D;
   --clr-accent: #FF7D27;
-
+  --clr-bgr: #0A0E1B;
   --clr-bx-bgr: #04151C;
     
   --fs-h1: 8rem;
@@ -41,7 +41,7 @@ body {
   position: relative; /* we need this for the scrollspy */ 
   font-size: var(-fs-body);
   color: var(--clr-light);
-  background: #282B2F;
+  background: var(--clr-bgr);
   overflow-x: hidden;
 }
 
@@ -291,21 +291,102 @@ a:hover {
   border-radius: 50%;
 }
 
+/* video Players */
+
+.video-bg {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.video-bg video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: 0;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.video-bg .container {
+  position: relative;
+  z-index: 2;
+}
+
+.video-bg .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 0.5;
+  z-index: 1;
+}
+
+
+
 /* Home Intro */
 
+
+header {
+  position: relative;
+  background-color: black;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+header video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: 0;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+header .container {
+  position: relative;
+  z-index: 2;
+}
+
+header .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 0.5;
+  z-index: 1;
+}
+
 .baner-content {
-  padding-top: 20vh;
   text-align: center;
-  background-image: url(../img/1st-section.jpg);
 }
 
 .baner-content h1 {
-  margin-top: 10px;
+  margin-top: 30vh;
   color: #fff;
   font-weight: 900;
   font-size: var(--fs-h1);
   text-transform: uppercase;
   margin-bottom: 20px;
+    z-index: 2;
 }
 
 .baner-content em {
@@ -331,8 +412,6 @@ a:hover {
 
 .educaton-content {
     padding-top: 15vh;
-/*  background-image: url("../img/utd.jpg"); */
-    back
     background-size: contain;
 }
 
@@ -381,11 +460,6 @@ a:hover {
   padding-left: 15px;
   padding-right: 15px;
   padding-top: 15vh;
-  background-image: url(../img/2nd-section.jpg);
-  background-attachment: fixed;
-  min-height: 100vh;
-  background-size: cover;
-  background-position: center center;
 }
 
 .service-content .left-text h4 {
@@ -454,7 +528,6 @@ a:hover {
 /* Projects */
 .projects-content {
   padding-top: 20vh;
-  background-image: url(../img/3rd-section.jpg);
   text-align: center;    
 }
 
@@ -506,7 +579,7 @@ a:hover {
 }
 
 .activity .card {
-    background-color: #282B2F;
+    background-color: var(--clr-bgr);
     padding: 30px;
 }
 
@@ -571,11 +644,6 @@ a:hover {
   padding-left: 15px;
   padding-right: 15px;
   padding-top: 8vh;
-  background-image: url(../img/4th-section.jpg);
-  background-attachment: fixed;
-  min-height: 100vh;
-  background-size: cover;
-  background-position: center center;
 }
 
 section {
@@ -637,11 +705,16 @@ section {
 
 /* contact */
 
+.section-title-contact {
+    color: var(--clr-accent);
+    font-weight: 600;
+    z-index: 3;
+}
+
 .contact-content {
   padding-left: 15px;
   padding-right: 15px;
-  padding-top: 16vh;
-  background-image: url(../img/5th-section.jpg);
+  padding-top: 30px;
 }
 
 .contact-form {
@@ -703,7 +776,7 @@ section {
 
 footer {
   text-align: center;
-  background-color: #282b2f;
+  background-color: var(--clr-bgr);
   padding: 70px 0px;
 }
 
@@ -729,7 +802,7 @@ footer ul li a {
   text-align: center;
   display: inline-block;
   background-color: #ff7d27;
-  color: #282b2f;
+  color: var(--clr-bgr);
   border-radius: 50%;
   text-decoration: none;
   transition: all 0.5s;
@@ -737,7 +810,7 @@ footer ul li a {
 }
 
 footer ul li a:hover {
-  color: #282b2f;
+  color: #000;
   background-color: #ff8e43;
 }
 
