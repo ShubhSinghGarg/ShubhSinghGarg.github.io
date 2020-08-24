@@ -23,7 +23,7 @@
   --fs-h3: 4rem;
   --fs-h4: 3rem;
   --fs-h5: 2rem;
-  --fs-body: 1.64rem;
+  --fs-body: 2rem;
 
   --lh-h1: 3rem;
   --lh-h2: 2.25rem;
@@ -645,6 +645,20 @@ header .overlay {
     font-size: 2rem;
     font-style: normal;
     trasition: color 0.5s ease-in-out;
+}
+
+.close {
+    font-size: 3rem;
+}
+
+.modal-title {
+    text-align: center;
+    font-size: var(--fs-h3);
+    color: var(--clr-dark);
+}
+
+.blend-link-dark {
+    color: var(--clr-ex-dark);
 }
 
 /* carousel */
