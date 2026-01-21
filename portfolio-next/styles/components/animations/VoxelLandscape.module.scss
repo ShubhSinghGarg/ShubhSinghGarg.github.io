@@ -1,0 +1,209 @@
+/* VoxelLandscape.module.scss */
+@use '../../../styles/variables.scss' as vars;
+
+.voxelContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.voxelSvg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tree {
+  will-change: transform;
+  transform-origin: bottom center;
+  
+  rect {
+    transition: fill 0.3s ease;
+  }
+  
+  &:hover rect {
+    filter: brightness(1.1);
+  }
+}
+
+.building {
+  will-change: transform;
+  transform-origin: bottom center;
+  
+  rect {
+    transition: fill 0.3s ease;
+  }
+  
+  &:hover {
+    rect {
+      filter: brightness(1.05);
+    }
+    
+    // Window glow effect on hover
+    rect[fill="#4169E1"] {
+      fill: #6495ED;
+      filter: drop-shadow(0 0 5px #4169E1);
+    }
+  }
+}
+
+.car {
+  will-change: transform;
+  animation: carDrive 15s linear infinite;
+  transform-origin: center;
+  
+  &:hover {
+    animation-play-state: paused;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes carDrive {
+  0% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(200px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+.roads {
+  opacity: 0.8;
+  
+  rect[fill="#FFFF00"] {
+    animation: roadMarkings 2s ease-in-out infinite;
+  }
+}
+
+@keyframes roadMarkings {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.landscapeDetails {
+  rect {
+    animation: grassSway 3s ease-in-out infinite;
+    transform-origin: bottom center;
+    
+    &:nth-child(2n) {
+      animation-delay: 0.5s;
+      animation-duration: 4s;
+    }
+    
+    &:nth-child(3n) {
+      animation-delay: 1s;
+      animation-duration: 3.5s;
+    }
+  }
+}
+
+@keyframes grassSway {
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+    opacity: 0.7;
+  }
+  25% {
+    transform: rotate(1deg) scale(1.05);
+    opacity: 0.8;
+  }
+  50% {
+    transform: rotate(0deg) scale(1.1);
+    opacity: 0.9;
+  }
+  75% {
+    transform: rotate(-1deg) scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+// Parallax effect for different layers
+.tree {
+  animation: parallaxSlow 20s ease-in-out infinite;
+}
+
+.building {
+  animation: parallaxMedium 15s ease-in-out infinite;
+}
+
+.landscapeDetails {
+  animation: parallaxFast 10s ease-in-out infinite;
+}
+
+@keyframes parallaxSlow {
+  0%, 100% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(-10px);
+  }
+}
+
+@keyframes parallaxMedium {
+  0%, 100% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(-5px);
+  }
+}
+
+@keyframes parallaxFast {
+  0%, 100% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(-2px);
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .voxelContainer {
+    // Reduce animation complexity on mobile
+    .tree,
+    .building,
+    .landscapeDetails {
+      animation-duration: 8s;
+    }
+    
+    .car {
+      animation-duration: 10s;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .landscapeDetails {
+    // Hide some details on very small screens
+    rect:nth-child(n+3) {
+      display: none;
+    }
+  }
+  
+  .building {
+    // Simplify buildings on mobile
+    rect[fill="#4169E1"]:nth-child(n+4) {
+      display: none;
+    }
+  }
+}
+
+// Performance optimizations
+.tree,
+.building,
+.car,
+.landscapeDetails {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}

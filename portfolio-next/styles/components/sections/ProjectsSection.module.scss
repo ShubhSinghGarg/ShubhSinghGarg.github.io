@@ -1,0 +1,157 @@
+/* ProjectsSection.module.scss */
+@use '../../../styles/variables.scss' as vars;
+
+.projectsSection {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  padding: 100px 0;
+  display: flex;
+  align-items: center;
+}
+
+.voxelBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0.3; // Reduce opacity so content is clearly visible
+}
+
+// Ensure content appears above voxel background
+.projectsSection .container {
+  position: relative;
+  z-index: 10;
+}
+
+.projectsSection .projects-content {
+  position: relative;
+  z-index: 10;
+}
+
+// Style adjustments for better visibility over landscape background
+.projectsSection {
+  .section-title {
+    color: #ffffff;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  hr {
+    border-color: rgba(255, 255, 255, 0.5);
+    width: 60%;
+    margin: 0 auto 3rem;
+  }
+
+  .projects-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .owl-carousel {
+    .item {
+      padding: 1rem;
+    }
+
+    .testimonials-item {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 2rem;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+      text-align: center;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.9);
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+      }
+
+      .btn-transparent {
+        width: 100%;
+        padding: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+
+        svg {
+          transition: all 0.3s ease;
+          filter: drop-shadow(0 0 10px rgba(229, 229, 229, 0.3));
+        }
+
+        &:hover svg {
+          color: #4ECDC4 !important;
+          filter: drop-shadow(0 0 15px rgba(78, 205, 196, 0.5));
+        }
+
+        .text-content {
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+          transition: all 0.3s ease;
+        }
+
+        &:hover .text-content {
+          color: #4ECDC4 !important;
+        }
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .projectsSection {
+    padding: 60px 0;
+
+    .section-title {
+      font-size: 2.5rem;
+    }
+
+    .owl-carousel {
+      .testimonials-item {
+        padding: 1.5rem;
+
+        .btn-transparent {
+          svg {
+            font-size: 6rem !important;
+          }
+
+          .text-content {
+            font-size: 2rem !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .projectsSection {
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .owl-carousel {
+      .testimonials-item {
+        padding: 1rem;
+
+        .btn-transparent {
+          svg {
+            font-size: 4rem !important;
+          }
+
+          .text-content {
+            font-size: 1.5rem !important;
+          }
+        }
+      }
+    }
+  }
+}

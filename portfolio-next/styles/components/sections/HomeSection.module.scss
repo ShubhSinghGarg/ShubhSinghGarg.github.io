@@ -1,0 +1,204 @@
+/* HomeSection.module.scss */
+@use '../../../styles/variables.scss' as vars;
+
+.bannerContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding-top: 5rem;
+  
+  .textContainer {
+    width: 100%;
+    color: white;
+    
+    h1 {
+      font-size: 6rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+    }
+    
+    span {
+      display: block;
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+    }
+    
+    .primaryButton {
+      display: inline-block;
+      padding: 12px 25px;
+      background-color: rgba(250, 250, 250, 0.1);
+      border: 2px solid #ffffff;
+      border-radius: 5px;
+      font-size: 1.2rem;
+      color: #ffffff;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      transition: all 0.3s;
+      
+      &:hover {
+        background-color: rgba(250, 250, 250, 0.9);
+        color: #000000;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+      }
+      
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+@keyframes fadeInSubtitle {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInButton {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 1200px) {
+  .bannerContent {
+    .textContainer {
+      .nameTypewriter {
+        font-size: 5rem;
+        min-height: 6rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .bannerContent {
+    .textContainer {
+      .nameTypewriter {
+        font-size: 4.5rem;
+        min-height: 5.5rem;
+      }
+      
+      .subtitle {
+        font-size: 1.6rem;
+      }
+      
+      .primaryButton {
+        font-size: 1.1rem;
+        padding: 10px 20px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .homeHeader {
+    height: 100vh;
+    min-height: 600px;
+  }
+  
+  .bannerContent {
+    padding-top: 3rem;
+    
+    .textContainer {
+      .nameTypewriter {
+        font-size: 3.5rem;
+        min-height: 4.5rem;
+      }
+      
+      .subtitle {
+        font-size: 1.4rem;
+        margin-bottom: 1.5rem;
+      }
+      
+      .primaryButton {
+        font-size: 1rem;
+        padding: 10px 18px;
+      }
+    }
+  }
+  
+  .middleLayer {
+    // Adjust signature size on tablets
+    transform: scale(0.8);
+  }
+}
+
+@media (max-width: 576px) {
+  .homeHeader {
+    min-height: 500px;
+  }
+  
+  .bannerContent {
+    padding-top: 2rem;
+    
+    .textContainer {
+      .nameTypewriter {
+        font-size: 2.5rem;
+        min-height: 3.5rem;
+        margin-bottom: 0.5rem;
+      }
+      
+      .subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+      }
+      
+      .primaryButton {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+      }
+    }
+  }
+  
+  .middleLayer {
+    // Further adjust signature size on mobile
+    transform: scale(0.6);
+  }
+}
+
+@media (max-width: 400px) {
+  .bannerContent {
+    .textContainer {
+      .nameTypewriter {
+        font-size: 2rem;
+        min-height: 3rem;
+      }
+      
+      .subtitle {
+        font-size: 1rem;
+      }
+      
+      .primaryButton {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+      }
+    }
+  }
+  
+  .middleLayer {
+    transform: scale(0.5);
+  }
+}

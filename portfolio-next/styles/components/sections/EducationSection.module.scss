@@ -1,0 +1,191 @@
+/* EducationSection.module.scss */
+@use '../../../styles/variables.scss' as vars;
+
+.educationContent {
+  padding: 100px 0;
+  background-color: #f4f4f4;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+
+  .sectionTitle {
+    font-size: 42px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 2;
+
+    &.educationTitle {
+      color: #222;
+    }
+  }
+
+  hr {
+    width: 90%;
+    margin: 0 auto 40px;
+    border-color: rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 2;
+  }
+
+  .container {
+    position: relative;
+    z-index: 2;
+  }
+
+  .universityInfo {
+    margin-bottom: 50px;
+
+    .textEducation {
+      margin-bottom: 15px;
+      font-size: 1.2rem !important;
+      color: #333 !important;
+
+      strong {
+        color: #222 !important;
+        font-weight: 700 !important;
+      }
+    }
+
+    .lineDec {
+      width: 60px;
+      height: 3px;
+      background-color: #333;
+      margin: 20px 0;
+    }
+
+    .imgEducationWrapper {
+      text-align: center;
+
+      .imgEducation {
+        max-width: 100%;
+        border-radius: 5px;
+        transition: transform 0.3s;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+
+  .sectionSubtitle {
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+  }
+
+  .cardDeck {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 -15px 50px;
+    
+    .cardItem {
+      flex: 1 0 calc(25% - 30px);
+      margin: 0 15px 30px;
+      background-color: rgba(51, 51, 51, 0.9);
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      overflow: hidden;
+      min-height: 250px;
+      color: #fff;
+      padding: 20px;
+      backdrop-filter: blur(5px);
+      
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      }
+      
+      .cardBody {
+        padding: 0;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        h4 {
+          font-size: 22px;
+          font-weight: 700;
+          margin-bottom: 10px;
+          color: #fff;
+          text-align: center;
+        }
+
+        h5 {
+          font-size: 16px;
+          margin-bottom: 15px;
+          color: rgba(255, 255, 255, 0.8);
+          text-align: center;
+        }
+
+        .lineDec2 {
+          width: 40px;
+          height: 2px;
+          background-color: #ffffff;
+          margin: 0 auto 20px;
+        }
+
+        p {
+          margin-bottom: 8px;
+          font-size: 1rem;
+          color: rgba(255, 255, 255, 0.9);
+        }
+      }
+    }
+  }
+}
+
+.voxelBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+// Responsive adjustments
+@media (max-width: 991px) {
+  .educationContent {
+    .cardDeck {
+      .cardItem {
+        flex: 1 0 calc(50% - 30px);
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .educationContent {
+    padding: 60px 0;
+    
+    .cardDeck {
+      .cardItem {
+        flex: 1 0 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .educationContent {
+    .universityInfo {
+      .textEducation {
+        font-size: 1rem;
+      }
+    }
+    
+    .sectionTitle {
+      font-size: 32px;
+    }
+    
+    .sectionSubtitle {
+      font-size: 24px;
+    }
+  }
+}

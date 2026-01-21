@@ -1,0 +1,323 @@
+/* InteractiveProjectGallery.module.scss */
+@use '../../../styles/variables.scss' as vars;
+
+.galleryContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+  perspective: 1000px;
+}
+
+.projectGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.projectItem {
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      135deg,
+      var(--project-color, #ffffff) 0%,
+      transparent 50%,
+      var(--project-color, #ffffff) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+  }
+  
+  &:hover::before {
+    opacity: 0.1;
+  }
+}
+
+.projectIcon {
+  font-size: 4rem;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 2;
+  
+  svg {
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+    transition: all 0.3s ease;
+  }
+}
+
+.projectContent {
+  position: relative;
+  z-index: 2;
+}
+
+.projectTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+.projectDescription {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+}
+
+.projectGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(
+    circle,
+    var(--project-color, #ffffff) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: all 0.4s ease;
+  z-index: 1;
+}
+
+.projectRipple {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border: 2px solid var(--project-color, #ffffff);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  z-index: 1;
+}
+
+// Hover states
+.projectItem.hovered {
+  border-color: var(--project-color, #ffffff);
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    0 0 20px var(--project-color, rgba(255, 255, 255, 0.2));
+  
+  .projectIcon svg {
+    color: var(--project-color, #ffffff);
+    filter: drop-shadow(0 0 15px var(--project-color, rgba(255, 255, 255, 0.5)));
+    transform: scale(1.1) rotateY(10deg);
+  }
+  
+  .projectTitle {
+    color: var(--project-color, #ffffff);
+    transform: translateY(-5px);
+  }
+  
+  .projectDescription {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .projectGlow {
+    width: 200px;
+    height: 200px;
+    opacity: 0.2;
+  }
+}
+
+// Active/click states
+.projectItem.active {
+  .projectRipple {
+    width: 300px;
+    height: 300px;
+    opacity: 0.6;
+    animation: rippleEffect 0.6s ease-out;
+  }
+}
+
+@keyframes rippleEffect {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0.8;
+  }
+  100% {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+  }
+}
+
+// Background particles
+.backgroundParticles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.backgroundParticle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  animation: particleFloat 5s ease-in-out infinite;
+}
+
+@keyframes particleFloat {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+    opacity: 0.3;
+  }
+  25% {
+    transform: translateY(-20px) scale(1.2);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-40px) scale(1.5);
+    opacity: 1;
+  }
+  75% {
+    transform: translateY(-20px) scale(1.2);
+    opacity: 0.6;
+  }
+}
+
+// Dynamic particle effects
+.particle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffffff 0%, transparent 70%);
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .galleryContainer {
+    padding: 1rem;
+  }
+  
+  .projectGrid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .projectItem {
+    padding: 1.5rem;
+  }
+  
+  .projectIcon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .projectTitle {
+    font-size: 1.3rem;
+  }
+  
+  .projectDescription {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .projectGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .projectItem {
+    padding: 1rem;
+  }
+  
+  .projectIcon {
+    font-size: 2.5rem;
+  }
+  
+  .projectTitle {
+    font-size: 1.2rem;
+  }
+  
+  // Reduce background particles on mobile
+  .backgroundParticles {
+    .backgroundParticle:nth-child(n+10) {
+      display: none;
+    }
+  }
+}
+
+// Performance optimizations
+.projectItem {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+// Accessibility
+.projectItem {
+  &:focus {
+    outline: 2px solid var(--project-color, #ffffff);
+    outline-offset: 4px;
+  }
+  
+  &:focus-visible {
+    .projectGlow {
+      width: 150px;
+      height: 150px;
+      opacity: 0.3;
+    }
+  }
+}
+
+// Animation states for different project types
+.projectItem[data-project-type="automation"] {
+  --project-color: #FF6B35;
+}
+
+.projectItem[data-project-type="web"] {
+  --project-color: #4ECDC4;
+}
+
+.projectItem[data-project-type="mobile"] {
+  --project-color: #45B7D1;
+}
+
+.projectItem[data-project-type="game"] {
+  --project-color: #F7DC6F;
+}
+
+.projectItem[data-project-type="misc"] {
+  --project-color: #BB8FCE;
+}

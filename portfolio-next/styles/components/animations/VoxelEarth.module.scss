@@ -1,0 +1,310 @@
+/* VoxelEarth.module.scss */
+@use '../../../styles/variables.scss' as vars;
+
+.voxelEarthContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  z-index: 1;
+  background: radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+}
+
+.stars {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 3s ease-in-out infinite;
+  
+  &:nth-child(2n) {
+    width: 1px;
+    height: 1px;
+  }
+  
+  &:nth-child(3n) {
+    width: 3px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.8);
+  }
+  
+  &:nth-child(5n) {
+    background: #FFD700;
+    box-shadow: 0 0 4px #FFD700;
+  }
+  
+  &:nth-child(7n) {
+    background: #87CEEB;
+    box-shadow: 0 0 3px #87CEEB;
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.earthWrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 450px;
+  height: 450px;
+}
+
+.earthSvg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.5));
+}
+
+.earthGroup {
+  transform-origin: center center;
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+
+.atmosphere {
+  animation: atmospherePulse 8s ease-in-out infinite;
+  filter: blur(2px);
+}
+
+@keyframes atmospherePulse {
+  0%, 100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+.continent {
+  will-change: transform;
+  
+  // Enhanced voxel continent styling
+  rect {
+    filter: drop-shadow(3px 5px 6px rgba(0, 0, 0, 0.5));
+    
+    // Add 3D voxel effect with multiple shadows
+    &[fill*="forestGradient"] {
+      filter: 
+        drop-shadow(3px 5px 6px rgba(0, 0, 0, 0.5))
+        drop-shadow(1px 2px 3px rgba(0, 100, 0, 0.3));
+    }
+    
+    &[fill*="desertGradient"] {
+      filter: 
+        drop-shadow(3px 5px 6px rgba(0, 0, 0, 0.5))
+        drop-shadow(1px 2px 3px rgba(218, 165, 32, 0.3));
+    }
+  }
+  
+  // Tree voxels with enhanced 3D effect
+  rect[fill*="treeGradient"] {
+    filter: 
+      drop-shadow(2px 3px 4px rgba(0, 0, 0, 0.6))
+      drop-shadow(0px 1px 2px rgba(0, 100, 0, 0.4));
+    animation: treeFloat 6s ease-in-out infinite;
+  }
+  
+  // Mountain styling
+  polygon {
+    filter: drop-shadow(2px 4px 5px rgba(0, 0, 0, 0.6));
+  }
+}
+
+@keyframes treeFloat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.cloudGroup {
+  will-change: transform;
+  transform-origin: center center;
+  
+  // Enhanced voxel cloud styling
+  rect {
+    filter: 
+      drop-shadow(2px 3px 5px rgba(0, 0, 0, 0.3))
+      drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.4));
+    animation: cloudVoxelFloat 5s ease-in-out infinite;
+  }
+  
+  &:nth-child(1) rect {
+    animation-delay: 0s;
+  }
+  
+  &:nth-child(2) rect {
+    animation-delay: 1s;
+  }
+  
+  &:nth-child(3) rect {
+    animation-delay: 2s;
+  }
+  
+  &:nth-child(4) rect {
+    animation-delay: 3s;
+  }
+  
+  &:nth-child(5) rect {
+    animation-delay: 4s;
+  }
+}
+
+@keyframes cloudVoxelFloat {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-8px) scale(1.1);
+    opacity: 1;
+  }
+}
+
+.iceCap {
+  filter: 
+    drop-shadow(0 0 12px rgba(255, 255, 255, 0.9))
+    drop-shadow(0 0 25px rgba(135, 206, 235, 0.5));
+  animation: iceCapShimmer 8s ease-in-out infinite;
+  
+  &:nth-child(2) {
+    animation-delay: 4s;
+  }
+}
+
+@keyframes iceCapShimmer {
+  0%, 100% {
+    opacity: 0.95;
+    filter: 
+      drop-shadow(0 0 12px rgba(255, 255, 255, 0.9))
+      drop-shadow(0 0 25px rgba(135, 206, 235, 0.5));
+  }
+  50% {
+    opacity: 1;
+    filter: 
+      drop-shadow(0 0 20px rgba(255, 255, 255, 1))
+      drop-shadow(0 0 35px rgba(135, 206, 235, 0.8));
+  }
+}
+
+// Enhanced Earth glow effect
+.earthSvg {
+  animation: earthGlow 12s ease-in-out infinite;
+}
+
+@keyframes earthGlow {
+  0%, 100% {
+    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.5));
+  }
+  50% {
+    filter: 
+      drop-shadow(0 20px 40px rgba(65, 105, 225, 0.4))
+      drop-shadow(0 0 50px rgba(135, 206, 235, 0.2));
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .earthWrapper {
+    width: 350px;
+    height: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  .earthWrapper {
+    width: 280px;
+    height: 280px;
+  }
+}
+
+// Performance optimizations
+.earthGroup,
+.continent,
+.cloudGroup {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+// Additional voxel-style enhancements
+.continent {
+  // Subtle continent floating animation
+  animation: continentFloat 10s ease-in-out infinite;
+  
+  &:nth-child(1) { animation-delay: 0s; }
+  &:nth-child(2) { animation-delay: 2s; }
+  &:nth-child(3) { animation-delay: 4s; }
+  &:nth-child(4) { animation-delay: 6s; }
+  &:nth-child(5) { animation-delay: 8s; }
+  &:nth-child(6) { animation-delay: 10s; }
+}
+
+@keyframes continentFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+// Cloud orbital animation
+.cloudGroup {
+  animation: cloudOrbit 15s linear infinite;
+  
+  &:nth-child(1) {
+    animation-duration: 20s;
+  }
+  
+  &:nth-child(2) {
+    animation-duration: 25s;
+    animation-direction: reverse;
+  }
+  
+  &:nth-child(3) {
+    animation-duration: 18s;
+  }
+  
+  &:nth-child(4) {
+    animation-duration: 22s;
+    animation-direction: reverse;
+  }
+  
+  &:nth-child(5) {
+    animation-duration: 16s;
+  }
+}
+
+@keyframes cloudOrbit {
+  0% {
+    transform: rotate(0deg) translateX(280px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(280px) rotate(-360deg);
+  }
+}

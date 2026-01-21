@@ -1,0 +1,170 @@
+/* ExperienceSection.module.scss */
+@use '../../../styles/variables.scss' as vars;
+
+.experienceContent {
+  padding: 100px 0;
+  background-color: #333;
+  color: white;
+  min-height: 100vh;
+  
+  .sectionTitle {
+    font-size: 42px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 30px;
+    
+    &.experienceTitle {
+      color: #ffffff;
+    }
+  }
+  
+  hr {
+    width: 90%;
+    margin: 0 auto 40px;
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .experienceItem {
+    margin-bottom: 60px;
+    padding: 0 15px;
+    
+    .imgExperienceWrapper {
+      margin-bottom: 25px;
+      display: flex;
+      justify-content: center;
+      
+      .imgExperience {
+        max-width: 100%;
+        border-radius: 8px;
+        transition: transform 0.3s;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+    
+    .sectionSubtitle {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #ffffff;
+      text-align: center;
+    }
+    
+    .employer {
+      font-size: 22px !important;
+      margin-bottom: 10px;
+      color: #ffffff !important;
+      opacity: 0.9 !important;
+      text-align: center;
+    }
+    
+    .standoutInfo {
+      font-size: 18px !important;
+      font-style: italic;
+      margin-bottom: 15px;
+      color: #ffffff !important;
+      opacity: 0.8 !important;
+      text-align: center;
+    }
+    
+    .lineDec {
+      width: 60px;
+      height: 3px;
+      background-color: #ffffff;
+      margin: 0 auto 25px;
+    }
+    
+    .jobDescription {
+      font-size: 1.1rem !important;
+      line-height: 1.8;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: left;
+      color: #ffffff !important;
+      
+      a {
+        color: #6ac1ff !important;
+        text-decoration: none;
+        transition: color 0.3s;
+        
+        &:hover {
+          color: #ffffff !important;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 991px) {
+  .experienceContent {
+    .experienceItem {
+      .sectionSubtitle {
+        font-size: 24px;
+      }
+      
+      .employer {
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .experienceContent {
+    padding: 70px 0;
+    
+    .sectionTitle {
+      font-size: 36px;
+    }
+    
+    .experienceItem {
+      padding: 0;
+      
+      .sectionSubtitle {
+        font-size: 22px;
+      }
+      
+      .employer {
+        font-size: 18px;
+      }
+      
+      .jobDescription {
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .experienceContent {
+    padding: 50px 0;
+    
+    .sectionTitle {
+      font-size: 30px;
+    }
+    
+    .experienceItem {
+      .imgExperienceWrapper {
+        margin-bottom: 20px;
+      }
+      
+      .sectionSubtitle {
+        font-size: 20px;
+      }
+      
+      .employer {
+        font-size: 16px;
+      }
+      
+      .standoutInfo {
+        font-size: 14px;
+      }
+    }
+  }
+}

@@ -1,0 +1,203 @@
+/* Import variables and bootstrap grid */
+@use 'variables.scss' as vars;
+@use 'bootstrap-grid.scss';
+
+/**
+ * Base Styles
+ * These are the truly global styles that apply throughout the site
+ */
+html, body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  scroll-behavior: smooth;
+  color: #333;
+  line-height: 1.6;
+  font-size: 16px;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Container adjustments */
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Typography base */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Basic Bootstrap compatibility classes */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Fix for Font Awesome in Next.js */
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('/fonts/fontawesome-webfont.eot');
+  src: url('/fonts/fontawesome-webfont.eot?#iefix') format('embedded-opentype'),
+       url('/fonts/fontawesome-webfont.woff2') format('woff2'),
+       url('/fonts/fontawesome-webfont.woff') format('woff'),
+       url('/fonts/fontawesome-webfont.ttf') format('truetype'),
+       url('/fonts/fontawesome-webfont.svg#fontawesomeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* AOS animation compatibility */
+[data-aos] {
+  opacity: 0;
+  transition-property: opacity, transform;
+}
+
+[data-aos].aos-animate {
+  opacity: 1;
+}
+
+/* Accessibility - Screen reader only content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus styles for better accessibility */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+/* Skip to main content link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: #000;
+  color: #fff;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 1000;
+  border-radius: 4px;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* Loading components for lazy-loaded sections */
+.section-loading,
+.footer-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  color: #666;
+  font-style: italic;
+}
+
+.section-loading {
+  min-height: 400px;
+}
+
+/* Enhanced animations and transitions */
+.section {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Improved button hover effects */
+button, .btn, .submit-button, .primary-button a {
+  transition: all 0.3s ease;
+  transform: translateY(0);
+}
+
+button:hover, .btn:hover, .submit-button:hover, .primary-button a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Enhanced card hover effects */
+.card, .clubs-item, .testimonials-item {
+  transition: all 0.3s ease;
+  transform: translateY(0);
+}
+
+.card:hover, .clubs-item:hover, .testimonials-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Smooth image transitions */
+img, .next-image {
+  transition: all 0.3s ease;
+}
+
+img:hover, .next-image:hover {
+  transform: scale(1.02);
+}
+
+/* Enhanced link hover effects */
+a {
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+/* Improved form field focus states */
+input:focus, textarea:focus {
+  transform: scale(1.02);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+  transition: all 0.3s ease;
+}
+
+/* Loading animation */
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+.section-loading, .footer-loading {
+  animation: pulse 2s infinite;
+}
